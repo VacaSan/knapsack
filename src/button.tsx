@@ -5,11 +5,11 @@ import { cn } from "./misc/util";
 // TODO: add more variants
 const variants = {
   secondary:
-    "text-gray-950 hover:bg-gray-950/5 focus-visible:bg-gray-950/5 active:bg-gray-950/20 bg-transparent border border-gray-950/20",
+    "text-gray-12 bg-transparent hover:bg-graya-2 focus-visible:bg-graya-2 active:bg-graya-3 border border-graya-7 hover:border-graya-8",
   primary:
-    "bg-primary-500 text-white hover:bg-primary-600 active:saturate-[1.1] active:brightness-[0.92] border border-black/10",
+    "bg-primary-9 text-white hover:bg-primary-10 focus-visible:bg-primary-10 active:saturate-[1.1] active:brightness-[0.92] border border-blacka-2",
   danger:
-    "text-error-500 hover:bg-error-500/10 focus-visible:bg-error-500/10 active:bg-error-500/20 bg-transparent border border-error-500/50",
+    "text-error-11 bg-transparent hover:bg-errora-2 focus-visible:bg-errora-2 active:bg-errora-3 border border-errora-7 hover:border-errora-8",
 };
 
 export type ButtonVariant = keyof typeof variants;
@@ -27,7 +27,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
         className={cn(
-          "inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap rounded-md px-3 text-sm font-medium transition-colors focus:outline-none focus-visible:border focus-visible:border-primary-500/60 focus-visible:ring-2 focus-visible:ring-primary-500/30 disabled:opacity-50 disabled:pointer-events-none",
+          "inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap rounded-md px-3 text-sm font-medium transition-colors focus:outline-none focus-visible:border focus-visible:border-primarya-9 focus-visible:ring-2 focus-visible:ring-primarya-6 disabled:opacity-50 disabled:pointer-events-none",
           variants[variant],
           props.className,
         )}
