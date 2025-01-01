@@ -1,11 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { TextField } from "../src/text-field";
+import { TextField, type TextFieldSize } from "../src/text-field";
 
 const meta = {
-  title: "TextField",
+  title: "Components/TextField",
   component: TextField,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      subtitle:
+        "Captures user input with an optional slot for buttons and icons.",
+    },
+  },
 } satisfies Meta<typeof TextField>;
 
 export default meta;
@@ -48,7 +54,6 @@ const MoreHorizontalIcon = () => (
 
 export const Basic: Story = {
   render: () => <TextField.Input placeholder="Search the docs..." />,
-  args: {},
 };
 
 export const WithLeadingIcon: Story = {
@@ -60,7 +65,6 @@ export const WithLeadingIcon: Story = {
       <TextField.Input placeholder="Search the docs..." />
     </TextField>
   ),
-  args: {},
 };
 
 export const WithTrailingIcon: Story = {
@@ -72,7 +76,6 @@ export const WithTrailingIcon: Story = {
       </TextField.Slot>
     </TextField>
   ),
-  args: {},
 };
 
 export const WithBothSlotsOccupied: Story = {
@@ -87,7 +90,29 @@ export const WithBothSlotsOccupied: Story = {
       </TextField.Slot>
     </TextField>
   ),
-  args: {},
+};
+
+const sizes: TextFieldSize[] = ["sm", "md", "lg"];
+
+export const Sizes: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        gap: "1rem",
+      }}
+    >
+      {sizes.map((size) => (
+        <TextField.Input
+          key={size}
+          size={size}
+          placeholder="Search the docs..."
+        />
+      ))}
+    </div>
+  ),
 };
 
 export const Disabled: Story = {
