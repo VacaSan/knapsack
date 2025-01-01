@@ -1,15 +1,25 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button } from "../src/button";
+import {
+  Button,
+  type ButtonProps,
+  type ButtonSize,
+  type ButtonVariant,
+} from "../src/button";
 
-const meta: Meta<typeof Button> = {
-  title: "Button",
+const meta = {
+  title: "Components/Button",
   component: Button,
   tags: ["autodocs"],
-};
+  parameters: {
+    docs: {
+      subtitle: "Displays a button or a component that looks like a button.",
+    },
+  },
+} satisfies Meta<ButtonProps>;
 
 export default meta;
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<ButtonProps>;
 
 const BookmarkIcon = () => (
   <svg
@@ -49,6 +59,13 @@ export const Danger: Story = {
   },
 };
 
+export const Ghost: Story = {
+  args: {
+    variant: "ghost",
+    children: "Delete user",
+  },
+};
+
 export const WithIcon: Story = {
   render: () => (
     <Button>
@@ -58,9 +75,30 @@ export const WithIcon: Story = {
   ),
 };
 
+const sizes: ButtonSize[] = ["sm", "md", "lg"];
+
+export const Sizes: Story = {
+  render: () => (
+    <div className="flex gap-2 items-center">
+      {sizes.map((size) => (
+        <Button key={size} size={size}>
+          Edit profile
+        </Button>
+      ))}
+    </div>
+  ),
+};
+
+const variants: ButtonVariant[] = ["primary", "secondary", "danger", "ghost"];
+
 export const Disabled: Story = {
-  args: {
-    children: "Edit profile",
-    disabled: true,
-  },
+  render: () => (
+    <div className="flex gap-2">
+      {variants.map((variant) => (
+        <Button key={variant} variant={variant} disabled>
+          Edit profile
+        </Button>
+      ))}
+    </div>
+  ),
 };
