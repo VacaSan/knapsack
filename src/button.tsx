@@ -5,11 +5,11 @@ import { cn } from "./misc/util";
 // TODO: add more variants
 const variants = {
   secondary:
-    "text-gray-950 hover:bg-gray-950/5 focus-visible:bg-gray-950/5 active:bg-gray-950/20 bg-transparent border border-gray-950/20",
+    "text-gray-a12 border-gray-a7 hover:border-gray-a8 hover:bg-gray-a2 focus-visible:bg-gray-a2 active:bg-gray-a3 bg-transparent data-[disabled]:border-gray-a6 data-[disabled]:text-gray-a8 data-[disabled]:text-gray-a8 data-[disabled]:border-gray-a6",
   primary:
-    "bg-primary-500 text-white hover:bg-primary-600 active:saturate-[1.1] active:brightness-[0.92] border border-black/10",
+    "bg-primary-9 hover:bg-primary-10 focus-visible:bg-primary-10 text-white active:brightness-[0.92] active:saturate-[1.1] data-[disabled]:bg-gray-a3 data-[disabled]:text-gray-a8 data-[disabled]:border-transparent",
   danger:
-    "text-error-500 hover:bg-error-500/10 focus-visible:bg-error-500/10 active:bg-error-500/20 bg-transparent border border-error-500/50",
+    "text-error-a11 hover:bg-error-a2 focus-visible:bg-error-a2 active:bg-error-a3 border-error-a7 hover:border-error-a8 bg-transparent data-[disabled]:text-gray-a8 data-[disabled]:border-gray-a6",
 };
 
 export type ButtonVariant = keyof typeof variants;
@@ -26,8 +26,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         ref={ref}
         {...props}
+        // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
+        data-disabled={props.disabled || undefined}
         className={cn(
-          "inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap rounded-md px-3 text-sm font-medium transition-colors focus:outline-none focus-visible:border focus-visible:border-primary-500/60 focus-visible:ring-2 focus-visible:ring-primary-500/30 disabled:opacity-50 disabled:pointer-events-none",
+          "inline-flex h-9 select-none items-center justify-center gap-2 whitespace-nowrap rounded-md border px-3 text-sm font-medium transition-colors focus-visible:focus-ring-primary data-[disabled]:pointer-events-none",
           variants[variant],
           props.className,
         )}
